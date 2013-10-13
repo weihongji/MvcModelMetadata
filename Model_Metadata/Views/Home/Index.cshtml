@@ -1,0 +1,27 @@
+﻿@using System.Linq.Expressions;
+@using System.Reflection;
+@model Model_Metadata.Models.ModelMetadataInfo
+
+@{
+    ViewBag.Title = "Model 元数据";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="grid">
+    <tr>
+        <th>Property</th>
+        @foreach (var accessor in Model.PropertyAccessors) {
+            var memberExpression = accessor.Body as MemberExpression;
+            var propertyInfo = (PropertyInfo)memberExpression.Member;
+            <th>@propertyInfo.Name</th>
+        }
+    </tr>
+    @foreach (var metadata in Model.ModelMetadata.Properties) {
+        <tr>
+            <td>@metadata.PropertyName</td>
+            @foreach (var accessor in Model.PropertyAccessors) {
+                <td>@(accessor.Compile()(metadata) ?? "N/A")</td>
+            }
+        </tr>
+    }
+</table>

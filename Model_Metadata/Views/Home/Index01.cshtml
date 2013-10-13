@@ -1,0 +1,10 @@
+﻿@model Model_Metadata.Models.DemoModel01
+
+@{
+    ViewBag.Title = "Index01";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.EditorFor(m => m.Foo)
+@Html.EditorFor(m => m.Bar)
+@Html.EditorFor(m => m.Baz)

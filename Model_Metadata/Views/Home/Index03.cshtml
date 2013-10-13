@@ -1,0 +1,11 @@
+﻿@model Model_Metadata.Models.DemoModel03
+
+@{
+    ViewBag.Title = "Index03";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*@Html.EditorForModel()*@
+@Html.DisplayFor(x => x.ObjectArray)
+<br />
+@Html.EditorFor(x => x.ObjectArray)
